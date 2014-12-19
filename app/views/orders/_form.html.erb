@@ -1,3 +1,5 @@
+
+
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -35,15 +37,68 @@
     <%= f.label :creditovalidade, 'Data de Validade' %><br>
     <%= f.date_select :creditovalidade %>
   </div>
+
   <div class="field">
     <%= f.label :valor %><br>
-    <%= f.text_field :valor %>
+    <%= f.text_field :valor ,:id=> "valor", :onchange=>"loadValor()"%>
+     <!--<input id="valor" name="order[valor]" type="text" onchange="loadValor()" /> <br />-->
   </div>
+
+ <script>
+  $(function loadValor(){
+    $('#valor').val("<%= @order.valor %>");
+    // $('#valor').val("223");
+  });
+
+  function divide() {
+      $('#valor').val("<%= @order.valor %>");
+      var x =document.getElementById("valor").value;
+      var y= document.getElementById("parcelas").value;
+      // var x = $('#valor').val();
+      // var y = $('#parcelas').val();
+      // alert("valor "+ $('#valor').val();
+      // alert("parcelas "+y);
+      //alert("Olé: "+ x + "/" +y);
+      document.getElementById("price").innerHTML = x/y;
+    }
+
+  function divisaoParcelas() {
+      var numPar = $('#parcelas').val(),
+          precototal= $('#valor').val();
+      var result = parseFloat(precototal/parseInt(numPar)).toFixed(2);
+      // alert(result);
+      $('#price').text(result);
+}
+
+
+  </script>
+
+
   <div class="field">
     <%= f.label :parcelas %><br>
-    <% numeroParcelas = [1,2,3,4,5,6,7,8,9,10,11,12] %>
-    <%= f.select(:parcelas,numeroParcelas) %>
+    <% numeroParcelas = [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10],[11,11],[12,12]] %>
+    <%= f.select :parcelas,
+        options_for_select([['1','1'],['2','2'],['3','3'],['4','4'],['5','5'],['6','6'],['7','7'],['8','8'],['9','9'],['10','10'],['11','11'],['12','12']],params[:parcelas]),
+        {}, {:id=> "parcelas" , :onchange=>"divisaoParcelas()"} %>
+     <!--<select name="parcelas" id="parcelas" onchange="divide()">
+      <option value="1" selected="selected">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select> -->
+    <br>
+    <label for="pricepermonth">Valor da Parcela :</label>
+      <span id="price"></span>
   </div>
+
   <div class="actions">
     <%= f.submit 'Comprar' %>
   </div>
