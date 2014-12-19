@@ -7,7 +7,6 @@ class CreateOrders < ActiveRecord::Migration
       t.string :creditonumber
       t.string :creditocod
       t.date :creditovalidade
-      t.references :Pacote, index: true
 
       t.timestamps
     end

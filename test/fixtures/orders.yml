@@ -7,7 +7,6 @@ one:
   creditonumber: MyString
   creditocod: MyString
   creditovalidade: 2014-12-18
-  Pacote_id: 
 
 two:
   numeroquartos: 1
@@ -16,4 +15,3 @@ two:
   creditonumber: MyString
   creditocod: MyString
   creditovalidade: 2014-12-18
-  Pacote_id: 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218235407) do
+ActiveRecord::Schema.define(version: 20141219011649) do
 
   create_table "orders", force: true do |t|
     t.integer  "numeroquartos"
@@ -20,12 +20,9 @@ ActiveRecord::Schema.define(version: 20141218235407) do
     t.string   "creditonumber"
     t.string   "creditocod"
     t.date     "creditovalidade"
-    t.integer  "Pacote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "orders", ["Pacote_id"], name: "index_orders_on_Pacote_id"
 
   create_table "pacotes", force: true do |t|
     t.string   "name"

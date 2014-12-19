@@ -18,7 +18,7 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "should create order" do
     assert_difference('Order.count') do
-      post :create, order: { Pacote_id: @order.Pacote_id, compradorname: @order.compradorname, creditocod: @order.creditocod, creditonumber: @order.creditonumber, creditovalidade: @order.creditovalidade, numeropessoas: @order.numeropessoas, numeroquartos: @order.numeroquartos }
+      post :create, order: { compradorname: @order.compradorname, creditocod: @order.creditocod, creditonumber: @order.creditonumber, creditovalidade: @order.creditovalidade, numeropessoas: @order.numeropessoas, numeroquartos: @order.numeroquartos }
     end
 
     assert_redirected_to order_path(assigns(:order))
@@ -35,7 +35,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should update order" do
-    patch :update, id: @order, order: { Pacote_id: @order.Pacote_id, compradorname: @order.compradorname, creditocod: @order.creditocod, creditonumber: @order.creditonumber, creditovalidade: @order.creditovalidade, numeropessoas: @order.numeropessoas, numeroquartos: @order.numeroquartos }
+    patch :update, id: @order, order: { compradorname: @order.compradorname, creditocod: @order.creditocod, creditonumber: @order.creditonumber, creditovalidade: @order.creditovalidade, numeropessoas: @order.numeropessoas, numeroquartos: @order.numeroquartos }
     assert_redirected_to order_path(assigns(:order))
   end
 
