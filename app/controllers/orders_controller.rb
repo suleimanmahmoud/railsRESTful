@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :verify_authenticity_token
+  respond_to :html, :xml, :json
   # GET /orders
   # GET /orders.json
   def index
@@ -10,11 +11,16 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @order}
+    end
   end
 
   # GET /orders/new
   def new
     @order = Order.new
+    @order.valor = params[:valor]
   end
 
   # GET /orders/1/edit
@@ -69,6 +75,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:numeroquartos, :numeropessoas, :compradorname, :creditonumber, :creditocod, :creditovalidade)
+      params.require(:order).permit(:numeroquartos, :numeropessoas, :compradorname, :creditonumber, :creditocod, :creditovalidade, :valor, :parcelas)
     end
 end

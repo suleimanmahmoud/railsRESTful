@@ -1,14 +1,16 @@
-<h1>Listing orders</h1>
+<h1>Listagem das Ordens</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Numeroquartos</th>
-      <th>Numeropessoas</th>
-      <th>Compradorname</th>
-      <th>Creditonumber</th>
-      <th>Creditocod</th>
-      <th>Creditovalidade</th>
+      <th>Numero de Quartos</th>
+      <th>Numero de Pessoas</th>
+      <th>Nome Comprador</th>
+      <th>Cartao de Credito</th>
+      <th>Cod Segurança</th>
+      <th>Validade</th>
+      <th>Valor</th>
+      <th>Parcelas</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +24,8 @@
         <td><%= order.creditonumber %></td>
         <td><%= order.creditocod %></td>
         <td><%= order.creditovalidade %></td>
+        <td><%= order.valor %></td>
+        <td><%= order.parcelas %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

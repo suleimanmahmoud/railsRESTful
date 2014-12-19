@@ -12,30 +12,39 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :numeroquartos %><br>
+    <%= f.label :numeroquartos, 'Número de Quartos'%><br>
     <%= f.number_field :numeroquartos %>
   </div>
   <div class="field">
-    <%= f.label :numeropessoas %><br>
+    <%= f.label :numeropessoas, 'Número de Pessoas'%><br>
     <%= f.number_field :numeropessoas %>
   </div>
   <div class="field">
-    <%= f.label :compradorname %><br>
+    <%= f.label :compradorname, 'Nome do Comprador' %><br>
     <%= f.text_field :compradorname %>
   </div>
   <div class="field">
-    <%= f.label :creditonumber %><br>
+    <%= f.label :creditonumber, 'Número do Cartão de Crédito' %><br>
     <%= f.text_field :creditonumber %>
   </div>
   <div class="field">
-    <%= f.label :creditocod %><br>
+    <%= f.label :creditocod, 'Código de Segurança'%><br>
     <%= f.text_field :creditocod %>
   </div>
   <div class="field">
-    <%= f.label :creditovalidade %><br>
+    <%= f.label :creditovalidade, 'Data de Validade' %><br>
     <%= f.date_select :creditovalidade %>
   </div>
+  <div class="field">
+    <%= f.label :valor %><br>
+    <%= f.text_field :valor %>
+  </div>
+  <div class="field">
+    <%= f.label :parcelas %><br>
+    <% numeroParcelas = [1,2,3,4,5,6,7,8,9,10,11,12] %>
+    <%= f.select(:parcelas,numeroParcelas) %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Comprar' %>
   </div>
 <% end %>

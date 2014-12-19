@@ -6,7 +6,9 @@ one:
   compradorname: MyString
   creditonumber: MyString
   creditocod: MyString
-  creditovalidade: 2014-12-18
+  creditovalidade: 2014-12-19
+  valor: 9.99
+  parcelas: 1
 
 two:
   numeroquartos: 1
@@ -14,4 +16,6 @@ two:
   compradorname: MyString
   creditonumber: MyString
   creditocod: MyString
-  creditovalidade: 2014-12-18
+  creditovalidade: 2014-12-19
+  valor: 9.99
+  parcelas: 1

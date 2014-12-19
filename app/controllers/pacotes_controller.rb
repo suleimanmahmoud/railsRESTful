@@ -1,6 +1,7 @@
 class PacotesController < ApplicationController
   before_action :set_pacote, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :verify_authenticity_token
+  respond_to :html, :xml, :json
   # GET /pacotes
   # GET /pacotes.json
   def index
@@ -10,6 +11,10 @@ class PacotesController < ApplicationController
   # GET /pacotes/1
   # GET /pacotes/1.json
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @pacote}
+    end
   end
 
   # GET /pacotes/new

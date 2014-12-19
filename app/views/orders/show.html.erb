@@ -1,34 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Numeroquartos:</strong>
+  <strong>Número de Quartos:</strong>
   <%= @order.numeroquartos %>
 </p>
 
 <p>
-  <strong>Numeropessoas:</strong>
+  <strong>Número de Pessoas:</strong>
   <%= @order.numeropessoas %>
 </p>
 
 <p>
-  <strong>Compradorname:</strong>
+  <strong>Nome do Comprador:</strong>
   <%= @order.compradorname %>
 </p>
 
 <p>
-  <strong>Creditonumber:</strong>
+  <strong>Número Cartão de Crédito:</strong>
   <%= @order.creditonumber %>
 </p>
 
 <p>
-  <strong>Creditocod:</strong>
+  <strong>Cód Segurança:</strong>
   <%= @order.creditocod %>
 </p>
 
 <p>
-  <strong>Creditovalidade:</strong>
+  <strong>Validade:</strong>
   <%= @order.creditovalidade %>
 </p>
 
+<p>
+  <strong>Valor:</strong>
+  <%= @order.valor %>
+</p>
+
+<p>
+  <strong>Parcelas:</strong>
+  <%= @order.parcelas %>
+</p>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', pacotes_path %>
+<%= link_to 'Back', orders_path %>

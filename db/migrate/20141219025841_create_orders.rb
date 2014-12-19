@@ -7,6 +7,8 @@ class CreateOrders < ActiveRecord::Migration
       t.string :creditonumber
       t.string :creditocod
       t.date :creditovalidade
+      t.decimal :valor, precision: 10, scale: 2
+      t.integer :parcelas
 
       t.timestamps
     end

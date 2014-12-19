@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219011649) do
+ActiveRecord::Schema.define(version: 20141219025841) do
 
   create_table "orders", force: true do |t|
     t.integer  "numeroquartos"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20141219011649) do
     t.string   "creditonumber"
     t.string   "creditocod"
     t.date     "creditovalidade"
+    t.decimal  "valor",           precision: 10, scale: 2
+    t.integer  "parcelas"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

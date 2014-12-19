@@ -37,3 +37,4 @@
 
 <%= link_to 'Edit', edit_pacote_path(@pacote) %> |
 <%= link_to 'Back', pacotes_path %>
+<%= link_to 'Comprar', (new_order_path :valor => @pacote.price)%>
