@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pacote.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pacote.description %>
+</p>
+
+<p>
+  <strong>Origem:</strong>
+  <%= @pacote.origem %>
+</p>
+
+<p>
+  <strong>Destino:</strong>
+  <%= @pacote.destino %>
+</p>
+
+<p>
+  <strong>Dataida:</strong>
+  <%= @pacote.dataida %>
+</p>
+
+<p>
+  <strong>Datavolta:</strong>
+  <%= @pacote.datavolta %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @pacote.price %>
+</p>
+
+<%= link_to 'Edit', edit_pacote_path(@pacote) %> |
+<%= link_to 'Back', pacotes_path %> |
+<%= link_to 'Comprar', new_order_path %>

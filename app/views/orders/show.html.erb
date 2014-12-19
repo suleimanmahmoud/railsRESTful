@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numeroquartos:</strong>
+  <%= @order.numeroquartos %>
+</p>
+
+<p>
+  <strong>Numeropessoas:</strong>
+  <%= @order.numeropessoas %>
+</p>
+
+<p>
+  <strong>Compradorname:</strong>
+  <%= @order.compradorname %>
+</p>
+
+<p>
+  <strong>Creditonumber:</strong>
+  <%= @order.creditonumber %>
+</p>
+
+<p>
+  <strong>Creditocod:</strong>
+  <%= @order.creditocod %>
+</p>
+
+<p>
+  <strong>Creditovalidade:</strong>
+  <%= @order.creditovalidade %>
+</p>
+
+<p>
+  <strong>Pacote:</strong>
+  <%= @order.Pacote %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

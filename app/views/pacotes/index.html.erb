@@ -1,0 +1,37 @@
+<h1>Pacotes Disponíveis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Origem</th>
+      <th>Destino</th>
+      <th>Dataida</th>
+      <th>Datavolta</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pacotes.each do |pacote| %>
+      <tr>
+        <td><%= pacote.name %></td>
+        <td><%= pacote.description %></td>
+        <td><%= pacote.origem %></td>
+        <td><%= pacote.destino %></td>
+        <td><%= pacote.dataida %></td>
+        <td><%= pacote.datavolta %></td>
+        <td><%= pacote.price %></td>
+        <td><%= link_to 'Show', pacote %></td>
+        <td><%= link_to 'Edit', edit_pacote_path(pacote) %></td>
+        <td><%= link_to 'Destroy', pacote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pacote', new_pacote_path %>
