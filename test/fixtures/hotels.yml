@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  numeroquartos: 1
+  numeropessoas: 1
+  destino: MyString
+  dataentrada: 2015-01-27
+  datasaida: 2015-01-27
+  price: 9.99
+
+two:
+  name: MyString
+  numeroquartos: 1
+  numeropessoas: 1
+  destino: MyString
+  dataentrada: 2015-01-27
+  datasaida: 2015-01-27
+  price: 9.99

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  tipo: 1
+  origem: MyString
+  destino: MyString
+  dataida: 2015-01-27
+  datavolta: 2015-01-27
+  price: 9.99
+
+two:
+  name: MyString
+  tipo: 1
+  origem: MyString
+  destino: MyString
+  dataida: 2015-01-27
+  datavolta: 2015-01-27
+  price: 9.99

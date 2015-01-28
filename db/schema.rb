@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219025841) do
+ActiveRecord::Schema.define(version: 20150128000200) do
+
+  create_table "hotels", force: true do |t|
+    t.string   "name"
+    t.integer  "numeroquartos"
+    t.integer  "numeropessoas"
+    t.string   "destino"
+    t.date     "dataentrada"
+    t.date     "datasaida"
+    t.decimal  "price",         precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "orders", force: true do |t|
     t.integer  "numeroquartos"
@@ -34,6 +46,18 @@ ActiveRecord::Schema.define(version: 20141219025841) do
     t.date     "dataida"
     t.date     "datavolta"
     t.decimal  "price",       precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "voos", force: true do |t|
+    t.string   "name"
+    t.integer  "tipo"
+    t.string   "origem"
+    t.string   "destino"
+    t.date     "dataida"
+    t.date     "datavolta"
+    t.decimal  "price",      precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :hotels
+
+  resources :voos
+
   get 'pages/about'
   resources :orders
   resources :pacotes

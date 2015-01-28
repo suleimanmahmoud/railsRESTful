@@ -1,6 +1,7 @@
-<h1>Listing pacotes</h1>
+<h1>Pacotes</h1>
 
-<table>
+<% if @pacotes.present? %>
+ <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -26,7 +27,7 @@
         <td><%= pacote.price %></td>
         <td><%= link_to 'Show', pacote %></td>
         <td><%= link_to 'Edit', edit_pacote_path(pacote) %></td>
-        <td><%= link_to 'Destroy', pacote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', pacote, method: :delete, data: { confirm: 'Confirmar Exclusão?' } %></td>
         <td><%= link_to 'Comprar', (new_order_path :valor => pacote.price ) %></td>
       </tr>
     <% end %>
@@ -34,5 +35,20 @@
 </table>
 
 <br>
+<% else %>
+  <p>Não foram encontrados pacotes na busca <%= params[:query] %>.</p>
+<% end %>
 
-<%= link_to 'New Pacote', new_pacote_path %>
+<form>
+  <%= form_tag(pacotes_path, :method => "get", id: "search-form") do %>
+  <h2> Busca de Pacotes</h2>
+  <%= text_field_tag :query, params[:query], placeholder: "Descrição" %>
+  <%= text_field_tag :fromdate, params[:fromdate], placeholder: "Data de Ida" %>
+  <%= text_field_tag :todate, params[:todate], placeholder: "Data de Volta" %>
+  <%= submit_tag "Buscar Pacotes" %>
+  <% end %>
+</form>
+<br>
+<%= link_to 'Cotar Pacote', new_pacote_path %>
+
+

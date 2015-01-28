@@ -29,17 +29,39 @@
   </div>
   <div class="field">
     <%= f.label :dataida %><br>
-    <%= f.date_select :dataida %>
+    <%= f.date_select :dataida , {}, {:id=>"dataida"} %>
   </div>
   <div class="field">
     <%= f.label :datavolta %><br>
-    <%= f.date_select :datavolta %>
+    <%= f.date_select :datavolta, {}, {:id=>"datavolta"} %> <!--, :onchange => "SetPrice();"} %>-->
   </div>
+
+  <script type="text/javascript">
+  //$(function(){
+    //$('#btnSubmit').click(function(){
+      //$('#datavolta').onchange(function(){
+function SetPrice(){
+    var volta = $('#datavolta').val() || [];
+    alert("data volta : "+ volta;
+
+    var data_ida = Date.parse(($('#dataida').val()));    
+    var data_volta = Date.parse(($('#datavolta').val()));    
+    alert("data volta : "+ data_volta + " data ida:" + data_volta);
+    //alert("data: "+ (data_volta - data_volta));
+    $('#price').val("123210");
+    //$('#price').text("123210");
+  }
+//});
+  
+  </script>
+
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
+      <!--<%= f.text_field :price, {:id=>"price"} %> 
+  <span id="price" name="price" ></span>-->
+
+  </div> 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :id=> "btnSubmit" %>
   </div>
 <% end %>

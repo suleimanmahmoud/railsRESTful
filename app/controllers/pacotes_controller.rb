@@ -6,6 +6,48 @@ class PacotesController < ApplicationController
   # GET /pacotes.json
   def index
     @pacotes = Pacote.all
+    #if params[:search]
+     # @pacotes = Pacote.search(params[:search]).order("created_at DESC")
+    #else
+    #  @pacotes = Pacote.all.order('created_at DESC')
+    #end 
+    if params[:query].present? and params[:fromdate].present? and params[:todate].present?
+      @pacotes = Pacote.search params[:query],
+        order: {price: :desc}, 
+        fields: [{description: :word}],
+        where: {
+          dataida: {
+            gte: DateTime.strptime(params[:fromdate], '%d/%m/%Y')
+          },
+          datavolta:{
+            lte: DateTime.strptime(params[:todate], '%d/%m/%Y')
+          }
+        }
+    elsif params[:query].present? and params[:fromdate].present?
+      @pacotes = Pacote.search params[:query],
+        order: {price: :desc}, 
+        fields: [{description: :word}],
+        where: {
+          dataida: {
+            gte: DateTime.strptime(params[:fromdate], '%d/%m/%Y')
+          }
+        }
+    elsif params[:query].present? and params[:todate].present?
+      @pacotes = Pacote.search params[:query],
+        order: {price: :desc}, 
+        fields: [{description: :word}],
+        where: {
+          datavolta:{
+            lte: DateTime.strptime(params[:todate], '%d/%m/%Y')
+          }
+        }
+    elsif params[:query].present?
+      @pacotes = Pacote.search params[:query],
+        order: {price: :desc}, 
+        fields: [{description: :word}]
+    else
+      @pacotes = Pacote.all.order('created_at DESC')
+    end
   end
 
   # GET /pacotes/1
@@ -30,6 +72,25 @@ class PacotesController < ApplicationController
   # POST /pacotes.json
   def create
     @pacote = Pacote.new(pacote_params)
+    #Pacote.reindex
+<<-DOC 
+a
+DOC
+    unless params[:price].to_s.present? #params[:price].to_s.blank?
+      dateVolta = DateTime.new(params["pacote"]["datavolta(1i)"].to_i,# the year
+                                      params["pacote"]["datavolta(2i)"].to_i,# the month
+                                      params["pacote"]["datavolta(3i)"].to_i)# the day
+      print "Date volta to time = " + dateVolta.to_time.to_s
+      dateIda = DateTime.new(params["pacote"]["dataida(1i)"].to_i,
+                                      params["pacote"]["dataida(2i)"].to_i,
+                                      params["pacote"]["dataida(3i)"].to_i)
+      print "Date ida to time = " + dateIda.to_time.to_s
+      #minutes in a day = 1440 
+      #seconds in a day = 86400
+      #price = vai ser 150 reais por dia 
+      @pacote.price = (dateVolta.to_time - dateIda.to_time)/86400*250
+    end
+
 
     respond_to do |format|
       if @pacote.save
