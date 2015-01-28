@@ -1,4 +1,6 @@
-<h1>Listing voos</h1>
+<h1>Voos</h1>
+
+<% if @voos.present? %>
 
 <table>
   <thead>
@@ -27,11 +29,26 @@
         <td><%= link_to 'Show', voo %></td>
         <td><%= link_to 'Edit', edit_voo_path(voo) %></td>
         <td><%= link_to 'Destroy', voo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Comprar', (new_order_path :valor => voo.price ) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% else %>
+  <p>Não foram encontrados Voos na busca <%= params[:query] %>.</p>
+<% end %>
 
-<%= link_to 'New Voo', new_voo_path %>
+<form>
+  <%= form_tag(voos_path, :method => "get", id: "search-form") do %>
+  <h2> Busca de Voos</h2>
+  <%= text_field_tag :fromcidade, params[:fromcidade], placeholder: "Origem" %>
+  <%= text_field_tag :tocidade, params[:tocidade], placeholder: "Destino" %>
+  <%= text_field_tag :fromdate, params[:fromdate], placeholder: "Data de Ida" %>
+  <%= text_field_tag :todate, params[:todate], placeholder: "Data de Volta" %>
+  <%= submit_tag "Buscar Voo" %>
+  <% end %>
+</form>
+<br>
+<%= link_to 'Cotar Voo', new_voo_path %>

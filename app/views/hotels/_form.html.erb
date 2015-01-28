@@ -29,15 +29,14 @@
   </div>
   <div class="field">
     <%= f.label :dataentrada %><br>
-    <%= f.date_select :dataentrada %>
+    <%= f.date_select :dataentrada , {}, {:id=>"dataentrada"} %>
   </div>
   <div class="field">
     <%= f.label :datasaida %><br>
-    <%= f.date_select :datasaida %>
+    <%= f.date_select :datasaida , {}, {:id=>"datasaida"}%>
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
   </div>
   <div class="actions">
     <%= f.submit %>

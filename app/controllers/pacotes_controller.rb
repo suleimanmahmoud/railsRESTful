@@ -5,7 +5,7 @@ class PacotesController < ApplicationController
   # GET /pacotes
   # GET /pacotes.json
   def index
-    @pacotes = Pacote.all
+    #@pacotes = Pacote.all
     #if params[:search]
      # @pacotes = Pacote.search(params[:search]).order("created_at DESC")
     #else

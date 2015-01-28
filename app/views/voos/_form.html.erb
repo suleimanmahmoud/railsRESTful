@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :tipo %><br>
-    <%= f.number_field :tipo %>
+    <%= f.label "Somente Ida" %><br>
+    <%= f.check_box :tipo %>
   </div>
   <div class="field">
     <%= f.label :origem %><br>
@@ -29,17 +29,32 @@
   </div>
   <div class="field">
     <%= f.label :dataida %><br>
-    <%= f.date_select :dataida %>
+    <%= f.date_select :dataida,{},{:id=> "dataida"} %>
   </div>
-  <div class="field">
+  <div class="field" id="ida_volta" style="display:block;">
     <%= f.label :datavolta %><br>
-    <%= f.date_select :datavolta %>
+    <%= f.date_select :datavolta,{},{:id=>"datavolta"} %>
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  var checkbox = document.getElementById('voo_tipo');
+  var details_div = document.getElementById('ida_volta');
+  //var datavolta_data = document.getElementById('datavolta');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       details_div.style['display'] = 'none';
+       //sem data de volta
+       //datavolta_data.disabled=true;
+     } else {
+       details_div.style['display'] = 'block';
+       //datavolta_data.disabled=false;
+     }
+  };
+</script>

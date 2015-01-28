@@ -1,4 +1,6 @@
-<h1>Listing hotels</h1>
+<h1>Hotels</h1>
+
+<% if @hotels.present? %>
 
 <table>
   <thead>
@@ -27,11 +29,25 @@
         <td><%= link_to 'Show', hotel %></td>
         <td><%= link_to 'Edit', edit_hotel_path(hotel) %></td>
         <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Comprar', (new_order_path :valor => hotel.price ) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<% else %>
+  <p>Não foram encontrados Hotels na busca <%= params[:query] %>.</p>
+<% end %>
 
-<%= link_to 'New Hotel', new_hotel_path %>
+<form>
+  <%= form_tag(hotels_path, :method => "get", id: "search-form") do %>
+  <h2> Busca de Hotels</h2>
+  <%= text_field_tag :query, params[:query], placeholder: "Nome do Hotel" %>
+  <%= text_field_tag :fromdate, params[:fromdate], placeholder: "Data de Entrada" %>
+  <%= text_field_tag :todate, params[:todate], placeholder: "Data de Saída" %>
+  <%= submit_tag "Buscar Hotels" %>
+  <% end %>
+</form>
+<br>
+<%= link_to 'Cotar Hotel', new_hotel_path %>
